@@ -20,8 +20,44 @@ const card16 = cards[15];
 
 //16 card images
 
+const easyButton = document.querySelector(".easy");
+const hardButton = document.querySelector(".hard");
+
+
 const easyCards = ['🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄','🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄'];
 const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇'];
 
 // console.log(easyCards[0]);
-card1.innerHTML = hardCards[1];
+
+function clearCards(){
+    for (let i=0;i<cards.length;i++){
+        cards[i].innerHTML = "";
+    };
+}
+function randomCardPick(arr){
+    randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+}
+function shuffleCards(){
+    for (let i=0;i<cards.length;i++){
+        cards[i].innerHTML = randomCardPick(easyCards);
+    }
+}
+// card1.innerHTML = hardCards[1];
+// clearCards();
+
+
+easyButton.addEventListener('click',()=>{
+    //use easyCards for back of the card
+    shuffleCards();
+    console.log('you picked easy cards!');
+})
+
+
+// for (let i=0;i<cards.length;i++){
+//     cards[i].addEventListener('click',()=>{
+        
+//         console.log('i tried to flip');
+//     });
+// };
+

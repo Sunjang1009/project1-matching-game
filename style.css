@@ -31,19 +31,25 @@ main {
 }
 .board {
     background-color: gainsboro;
-    width:81vw;
-    height: 81vh;
+    width: 81.3vw;
+    height: 81.3vh;
    
 }
 .score-board {
     background-color: hotpink;
-    width:25vw;
+    height: 81.4vh;
+    width: 25vw;
 }
 .row {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+
+/* .card-flip {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.8s;
+  } */
 
 /* .blue {
     background-color: cornflowerblue;
