@@ -4,27 +4,24 @@ body {
 }
 nav {
     background-color: pink;
-    height: 8vh;
-    color:darkblue;
+    height: 10vh;
+    color:gray;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.7em;
 }
-button {
-    left:50%;
-    
-}
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    border: 1px solid black; 
+  }
 main {
     height: 80vh;
     display: flex;
 }
 
-footer {
-    background-color: cornflowerblue;
-    height: 8vh;
-    color:darkblue;
-    text-align: center;
-    font-size: 1.5em;
-}
+
 .card {
     border:1px solid;
     height: 20vh;
