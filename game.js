@@ -1,23 +1,5 @@
 const cards = document.querySelectorAll(".card");
 // console.log(cards);
-
-const card1 = cards[0];
-const card2 = cards[1];
-const card3 = cards[2];
-const card4 = cards[3];
-const card5 = cards[4];
-const card6 = cards[5];
-const card7 = cards[6];
-const card8 = cards[7];
-const card9 = cards[8];
-const card10 = cards[9];
-const card11 = cards[10];
-const card12 = cards[11];
-const card13 = cards[12];
-const card14 = cards[13];
-const card15 = cards[14];
-const card16 = cards[15];
-
 //16 card images
 
 const easyButton = document.querySelector(".easy");
@@ -34,40 +16,31 @@ function clearCards(){
         cards[i].innerHTML = "";
     };
 }
-function randomCardPick(arr){
-    randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-}
+let player1stTurn=true;
+let player2ndTurn=false;
+
 //copy this function .. to shuffle
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
-// shuffle(easyCards);
-// console.log(easyCards);
-// shuffle(easyCards);
-// console.log(easyCards);
-
-
-
-// card1.innerHTML = hardCards[1];
-// clearCards();
-
-
+//press easy button, then shuffle
 easyButton.addEventListener('click',()=>{
     //use easyCards for back of the card
     shuffle(easyCards);
-    for (let i=0;i<cards.length;i++){
-        cards[i].innerHTML = easyCards[i];
-    }
     console.log('you picked easy cards!');
-})
+});
 
+function findMatchingCards(cards){
+    if(player1stTurn && )
+}
 
-// for (let i=0;i<cards.length;i++){
-//     cards[i].addEventListener('click',()=>{
+//real game is here!!
+for (let i=0;i<cards.length;i++){
+    cards[i].addEventListener('click',()=>{
+        cards[i].innerHTML = easyCards[i];
         
-//         console.log('i tried to flip');
-//     });
-// };
+        console.log('I have a headache!');
+    });
+};
 
