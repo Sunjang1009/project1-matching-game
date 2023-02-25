@@ -38,18 +38,28 @@ function randomCardPick(arr){
     randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
 }
-function shuffleCards(){
-    for (let i=0;i<cards.length;i++){
-        cards[i].innerHTML = randomCardPick(easyCards);
-    }
+//copy this function .. to shuffle
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
 }
+
+// shuffle(easyCards);
+// console.log(easyCards);
+// shuffle(easyCards);
+// console.log(easyCards);
+
+
+
 // card1.innerHTML = hardCards[1];
 // clearCards();
 
 
 easyButton.addEventListener('click',()=>{
     //use easyCards for back of the card
-    shuffleCards();
+    shuffle(easyCards);
+    for (let i=0;i<cards.length;i++){
+        cards[i].innerHTML = easyCards[i];
+    }
     console.log('you picked easy cards!');
 })
 
