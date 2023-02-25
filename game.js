@@ -18,9 +18,10 @@ const card14 = cards[13];
 const card15 = cards[14];
 const card16 = cards[15];
 
+//16 card images
 
-const easyCards = ['🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄'];
-const hardCards = [];
+const easyCards = ['🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄','🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄'];
+const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇'];
 
 // console.log(easyCards[0]);
-card1.innerHTML = easyCards[1];
+card1.innerHTML = hardCards[1];
