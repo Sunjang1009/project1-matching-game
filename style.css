@@ -1,0 +1,65 @@
+body {
+    height: 100vh;
+
+}
+nav {
+    background-color: pink;
+    height: 8vh;
+    color:darkblue;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+main {
+    height: 80vh;
+    display: flex;
+}
+
+footer {
+    background-color: cornflowerblue;
+    height: 8vh;
+    color:darkblue;
+    text-align: center;
+    font-size: 1.5em;
+}
+.card {
+    border:1px solid;
+    height: 20vh;
+    width: 20vw;
+    text-align: center;
+    font-size: 3.5em;
+}
+.board {
+    background-color: gainsboro;
+    width:81vw;
+    height: 81vh;
+   
+}
+.score-board {
+    background-color: hotpink;
+    width:25vw;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* .blue {
+    background-color: cornflowerblue;
+}
+.orange {
+    background-color: orangered;
+} */
+/* .blink-bg {
+    animation: blinkingBackground 2s infinite;
+	}
+	@keyframes blinkingBackground{
+		0%		{ background-color: purple;}
+		25%		{ background-color: beige;}
+		50%		{ background-color: purple;}
+		75%		{ background-color: beige;}
+		100%	{ background-color: purple;}}
+ */
+
+
