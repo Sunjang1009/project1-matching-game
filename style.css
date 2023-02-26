@@ -14,17 +14,24 @@ nav {
     justify-content: center;
     align-items: center;
     height: 10vh;
-  }
+}
+
 button {
     color:green;
-    font-size: 1em;
+    font-size: 1.3em;
     margin-right: 10px;
+    font-weight: bold;
+    background-color: aliceblue;
 }
+
+.disabled {
+    color:dark grey;
+}
+
 main {
     height: 80vh;
     display: flex;
 }
-
 
 .card {
     border:1px solid;
@@ -52,9 +59,6 @@ main {
 
 .flipped {
     background-color: purple;
-}
-.disabled {
-    color:dark grey;
 }
 
 /* .card-flip {
