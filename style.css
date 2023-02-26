@@ -13,9 +13,13 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 8vh;
-    border: 1px solid black; 
+    height: 10vh;
   }
+button {
+    color:green;
+    font-size: 1em;
+    margin-right: 10px;
+}
 main {
     height: 80vh;
     display: flex;
@@ -44,6 +48,13 @@ main {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.flipped {
+    background-color: purple;
+}
+.disabled {
+    color:dark grey;
 }
 
 /* .card-flip {
