@@ -8,8 +8,15 @@ const hardButton = document.querySelector(".hard");
 
 const easyCards = ['🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄','🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄'];
 const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇'];
+let playingCards;
+// playingCards = shuffle(easyCards);
+// console.log(playingCards);
 
-// console.log(easyCards[0]);
+const flippedCards = document.querySelectorAll(".flipped");
+
+// console.log(flippedCards);
+
+// // console.log(easyCards[0]);
 
 function clearCards(){
     for (let i=0;i<cards.length;i++){
@@ -18,10 +25,11 @@ function clearCards(){
 }
 let player1stTurn=true;
 let player2ndTurn=false;
-let playingCards;
+
 //copy this function .. to shuffle
 function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
+    shuffleArray = array.sort(() => Math.random() - 0.5);
+    return shuffleArray;
 }
 
 //press easy button, then shuffle, return easycards as playingcards;
@@ -51,10 +59,9 @@ function shuffle(array) {
 
 //choose options easy or hard
 
-function startGame(){
+function chooseEasyHardGame(){
     if(easyButton.addEventListener('click',()=>{
         //use easyCards for back of the card
-        shuffle(easyCards);
         playingCards = easyCards;
         console.log('you picked easy cards!');
         // console.log(playingCards)
@@ -63,7 +70,6 @@ function startGame(){
     }
     if(hardButton.addEventListener('click',()=>{
         //use easyCards for back of the card
-        shuffle(hardCards);
         playingCards = hardCards;
         console.log('you picked challenge!');
         // console.log(playingCards)
@@ -73,21 +79,30 @@ function startGame(){
 };
 
 
-
+//if innerHTML not null 2 cards were flipped, then matching 
 function findMatchingCards(card){
-    if(player1stTurn && card.innerHTML === ''){
-        card.innerHTML = easyCards[i];
-        player1stTurn = false;
-        player2ndTurn = true;
-        return true;
-    } 
+    // shuffle(playingCards);
+    for (let i=0;i<playingCards.length;i++){
+        card.innerHTML = playingCards[i];
+    }
 }
 
+
+
 //real game is here!!
-startGame();
+
+
+
+
+// console.log(playingCards);
+
+// chooseEasyHardGame();
+// console.log(playingCards);
+
+
 for (let i=0;i<cards.length;i++){
     cards[i].addEventListener('click',()=>{
-        cards[i].innerHTML = playingCards[i];
+        findMatchingCards(cards[i]);
         console.log('I have a headache!');
     });
 };
