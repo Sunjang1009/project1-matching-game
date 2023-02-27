@@ -25,7 +25,8 @@ button {
 }
 
 .disabled {
-    color:dark grey;
+    color:white;
+    background-color: grey;
 }
 
 main {

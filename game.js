@@ -34,25 +34,28 @@ function shuffle(array) {
 
 //press easy button, then shuffle, return easycards as playingcards;
 //press hard button, then shuffle, return hardcards as playingcards;
-// easyButton.addEventListener('click',()=>{
-//     //use easyCards for back of the card
-//     shuffle(easyCards);
-//     let playingCards = easyCards;
-//     console.log('you picked easy cards!');
-//     // console.log(playingCards)
-//     return playingCards;
-// });
+easyButton.addEventListener('click',()=>{
+    //use easyCards for back of the card
+    shuffle(easyCards);
+    // console.log(easyCards);//works
+    easyButton.classList.add("disabled");
+    easyButton.disabled = true;
+
+});
 
 
 
-// hardButton.addEventListener('click',()=>{
-//     //use easyCards for back of the card
-//     shuffle(hardCards);
-//     let playingCards = hardCards;
-//     console.log('you picked challenge!');
-//     // console.log(playingCards)
-//     return playingCards;
-// });
+hardButton.addEventListener('click',()=>{
+    //use easyCards for back of the card
+    shuffle(hardCards);
+    let playingCards = hardCards;
+    console.log('you picked challenge!');
+    console.log(playingCards[0])
+    return playingCards;
+});
+
+
+
 
 
 
@@ -62,7 +65,7 @@ function shuffle(array) {
 function chooseEasyHardGame(){
     if(easyButton.addEventListener('click',()=>{
         //use easyCards for back of the card
-        playingCards = easyCards;
+        playingCards = shuffle(easyCards);
         console.log('you picked easy cards!');
         // console.log(playingCards)
     })){
@@ -70,7 +73,7 @@ function chooseEasyHardGame(){
     }
     if(hardButton.addEventListener('click',()=>{
         //use easyCards for back of the card
-        playingCards = hardCards;
+        playingCards = shuffle(hardCards);
         console.log('you picked challenge!');
         // console.log(playingCards)
     })){
@@ -81,7 +84,6 @@ function chooseEasyHardGame(){
 
 //if innerHTML not null 2 cards were flipped, then matching 
 function findMatchingCards(card){
-    // shuffle(playingCards);
     for (let i=0;i<playingCards.length;i++){
         card.innerHTML = playingCards[i];
     }
@@ -99,10 +101,9 @@ function findMatchingCards(card){
 // chooseEasyHardGame();
 // console.log(playingCards);
 
-
 for (let i=0;i<cards.length;i++){
     cards[i].addEventListener('click',()=>{
-        findMatchingCards(cards[i]);
+        
         console.log('I have a headache!');
     });
 };
