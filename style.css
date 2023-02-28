@@ -39,23 +39,40 @@ main {
     height: 80vh;
     display: flex;
 }
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
+
+.flip-card {
+    display: flex;
+    height: 20vh;
+    width: 20vw;
+    perspective: 1000px;
+}
 .card {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color:lightpink;
     border:1px solid;
-    height: 20vh;
-    width: 20vw;
+    height: 100%;
+    width: 100%;
     text-align: center;
     font-size: 3.5em;
     border-radius: 10px;
-    backface-visibility: hidden;
-    transition: transform 0.25s linear;
     margin: 2px;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.flip-card:hover .card{
+    transform: rotateY(180deg);
+}
 .board {
     background-color: gainsboro;
     width: 81.3vw;
@@ -68,28 +85,31 @@ main {
     width: 25vw;
     border-radius: 10px;
 }
-.row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-}
+
 
 .flipped {
     background-color: purple;
 }
 
-.card .card-back{
-    transform: rotateY(-180deg);
-}
+
 .card .card-front{
     color:purple;
-
 }
 
-.card:hover .card-front{
+.card-front, .card-back{
+    position: absolute;
+    width:100%;
+    height:100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #bbb;
+    color:black;
+}
+.card-back {
+    background-color: #fff;
+    color:white;
     transform: rotateY(180deg);
-}
-.card:hover .card-back{
-    transform: rotateY(0);
 }
