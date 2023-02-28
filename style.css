@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    font-family: "Poppins", sans-serif;
+}
 body {
     height: 100vh;
 
@@ -7,13 +11,14 @@ nav {
     height: 10vh;
     color:gray;
     text-align: center;
-    font-size: 1.7em;
+    font-size: 1.3em;
 }
 .buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
+
 }
 
 button {
@@ -22,11 +27,12 @@ button {
     margin-right: 10px;
     font-weight: bold;
     background-color: aliceblue;
+    border-radius: 5px;
 }
 
 .disabled {
     color:white;
-    background-color: grey;
+    background-color: white;
 }
 
 main {
@@ -35,53 +41,55 @@ main {
 }
 
 .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:lightpink;
     border:1px solid;
     height: 20vh;
     width: 20vw;
     text-align: center;
     font-size: 3.5em;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transition: transform 0.25s linear;
+    margin: 2px;
 }
+
 .board {
     background-color: gainsboro;
     width: 81.3vw;
     height: 81.3vh;
-   
+    
 }
 .score-board {
     background-color: hotpink;
-    height: 81.4vh;
+    height: 85vh;
     width: 25vw;
+    border-radius: 10px;
 }
 .row {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
 }
 
 .flipped {
     background-color: purple;
 }
 
-/* .card-flip {
-    transform: rotateY( 180deg ) ;
-    transition: transform 0.8s;
-  } */
-
-/* .blue {
-    background-color: cornflowerblue;
+.card .card-back{
+    transform: rotateY(-180deg);
 }
-.orange {
-    background-color: orangered;
-} */
-/* .blink-bg {
-    animation: blinkingBackground 2s infinite;
-	}
-	@keyframes blinkingBackground{
-		0%		{ background-color: purple;}
-		25%		{ background-color: beige;}
-		50%		{ background-color: purple;}
-		75%		{ background-color: beige;}
-		100%	{ background-color: purple;}}
- */
+.card .card-front{
+    color:purple;
 
+}
 
+.card:hover .card-front{
+    transform: rotateY(180deg);
+}
+.card:hover .card-back{
+    transform: rotateY(0);
+}
