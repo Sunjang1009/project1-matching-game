@@ -9,7 +9,7 @@ body {
 nav {
     background-color: pink;
     height: 10vh;
-    color:gray;
+    color:hotpink;
     text-align: center;
     font-size: 1.3em;
 }
@@ -32,7 +32,7 @@ button {
 
 .disabled {
     color:white;
-    background-color: white;
+    background-color: rgb(219, 215, 215);
 }
 
 main {
@@ -44,7 +44,18 @@ main {
     justify-content: space-around;
     align-items: center;
 }
-
+.board {
+    background-color: gainsboro;
+    width: 81.3vw;
+    height: 81.3vh;
+    
+}
+.score-board {
+    background-color: hotpink;
+    height: 85vh;
+    width: 25vw;
+    border-radius: 10px;
+}
 
 .flip-card {
     display: flex;
@@ -70,31 +81,20 @@ main {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.flip-card:hover .card{
+.flip-card .card.flip{
     transform: rotateY(180deg);
 }
-.board {
-    background-color: gainsboro;
-    width: 81.3vw;
-    height: 81.3vh;
-    
-}
-.score-board {
-    background-color: hotpink;
-    height: 85vh;
-    width: 25vw;
-    border-radius: 10px;
-}
+
 
 
 .flipped {
     background-color: purple;
 }
 
-
+/* 
 .card .card-front{
     color:purple;
-}
+} */
 
 .card-front, .card-back{
     position: absolute;
@@ -105,11 +105,12 @@ main {
 }
 
 .card-front {
-    background-color: #bbb;
-    color:black;
+    background-color: lightblue;
+    color:ivory;
 }
 .card-back {
+    text-align: center;
     background-color: #fff;
-    color:white;
+    color:black;
     transform: rotateY(180deg);
 }
