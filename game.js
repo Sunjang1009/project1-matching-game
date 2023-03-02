@@ -7,6 +7,7 @@ const hardButton = document.querySelector(".hard");
 // const flippedCards = document.querySelectorAll(".flip");
 
 const cardBackSides = document.querySelectorAll(".card-back");
+
 //real img display
 // console.log(cardBackSides);
 //class : matched
@@ -20,8 +21,8 @@ const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻',
 // let player1stTurn=true;
 // let player2ndTurn=false;
 let playerScore = 0;
-let matchedCardCount = 0;
-let flippedCardsCount = 0;// for counting for comparison
+let matchedCardCount = 0;//max = 8
+// let flippedCardsCount = 0;// for counting for comparison
 let gameStart = false;
 
 function clearGame(){
@@ -83,33 +84,62 @@ function displayHardCards(){
         return
     });
 }
-const currentCards = [];
+let currentCards = [];
 //let user clicking cards 
 function flipcard(){
     this.classList.add("flip")
+    const flippedCards = document.querySelectorAll(".flip");
     if(currentCards.length === 0){
         let cardOne = this.querySelector(".card-back").innerText;
         currentCards.push(cardOne);
         console.log(currentCards[0]);
+        console.log(flippedCards.length);//class flip grab check
         return;
     }
     if(currentCards.length === 1){
         let cardTwo = this.querySelector(".card-back").innerText;
         currentCards.push(cardTwo);
         console.log(currentCards[1]);
-        return;
+        console.log(flippedCards.length);
+        if(currentCards[0] === currentCards[1]){
+            console.log("matched");
+            currentCards = [];
+            //keep it opened.
+        }
+        if(currentCards[0] !== currentCards[1]){
+            console.log("Try again!");
+            console.log(flippedCards.length);//0???
+            currentCards = [];
+            //got some flipped..
+            flippedCards.forEach(flippedCard => {
+                setTimeout(flippedCard.classList.toggle("flip"),1000)
+            })
+            //flip back opened colors.
+            
+        }
     }
-    if(currentCards.length === 2){
-        return matchingCards(arr);
-    }
+    // if(currentCards.length === 2){
+    //     return matchingCards(currentCards);
+    // }
   
 }
 
 
 //matching cards
-function matchingCards(arr){
-
-}
+// function matchingCards(arr){
+//     //not match then flip back!
+//     if(arr[0] === arr[1]){
+//         console.log("matched");
+//         arr = [];
+//         matchedCardCount++
+//         playerScore++
+//     } else {
+//         arr[0].classList.remove("flip");
+//         arr[1].classList.remove("flip");
+//         arr = [];
+//         console.log("try again!");
+//     }
+// }
 
 //game start!
 
