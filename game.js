@@ -84,45 +84,101 @@ function displayHardCards(){
         return
     });
 }
+
+
 let currentCards = [];
+//once flipped and do not click again
 //let user clicking cards 
+
 function flipcard(){
-    this.classList.add("flip")
+    let cardOne;
+    let cardTwo;
+    // this.classList.add("flip")
     const flippedCards = document.querySelectorAll(".flip");
-    if(currentCards.length === 0){
-        let cardOne = this.querySelector(".card-back").innerText;
-        currentCards.push(cardOne);
-        console.log(currentCards[0]);
-        console.log(flippedCards.length);//class flip grab check
-        return;
+    if(currentCards.length < 2){
+        if(!cardOne){
+            this.classList.add("flip");
+            cardOne = this.querySelector(".card-back").innerText;
+            currentCards.push(cardOne);
+            return cardOne;
+            // console.log(currentCards[0],currentCards[1]);
+        }
+        //this is 2nd user click!
+        if(cardOne){
+            this.classList.add("flip");
+            cardTwo = this.querySelector(".card-back").innerText;
+            currentCards.push(cardTwo);
+            return;
+        }
     }
-    if(currentCards.length === 1){
-        let cardTwo = this.querySelector(".card-back").innerText;
-        currentCards.push(cardTwo);
-        console.log(currentCards[1]);
-        console.log(flippedCards.length);
+
+    if(currentCards.length === 2){
         if(currentCards[0] === currentCards[1]){
-            console.log("matched");
-            currentCards = [];
-            //keep it opened.
-        }
-        if(currentCards[0] !== currentCards[1]){
-            console.log("Try again!");
-            console.log(flippedCards.length);//0???
-            currentCards = [];
-            //got some flipped..
+            console.log("matching")
+
+            matchedCardCount++
+            // console.log(flippedCards.length);
             flippedCards.forEach(flippedCard => {
-                setTimeout(flippedCard.classList.toggle("flip"),1000)
-            })
-            //flip back opened colors.
+                flippedCard.classList.replace("flip","matched");
+            });
             
+            return currentCards = [];
+        } else {
+            console.log("not matching")
+            //flip back!
+            console.log(flippedCards.length);
+            setTimeout(flippedCards.forEach(flippedCard => {
+                flippedCard.classList.remove("flip");
+            }),1000)
+            return currentCards = [];
         }
     }
+}
+
+
+// function matchingCards(img1,img2){
+//     const flippedCards = document.querySelectorAll(".flip");
+//     if (img1 === img2){
+//         console.log("yes. keep going1")
+//     } else {
+//         console.log('no no no')
+//     }
+//     console.log("matching function")
+//     console.log(flippedCards.length);
+
+
+    // }
+    // if(currentCards.length === 1 && !cardTwo){
+    //     this.classList.add("flip");
+    //     currentCards.push(cardTwo);
+    //     console.log(currentCards[1]);
+    //     console.log(flippedCards.length);
+
+    //     if(currentCards[0] === currentCards[1]){
+    //         console.log("matched");
+    //         currentCards = [];
+    //         flippedCards.forEach(flippedCard => {
+    //             flippedCard.removeEventListener("click",flipcard);
+    //         })
+    //         //keep it opened.
+    //     }
+    //     if(currentCards[0] !== currentCards[1]){
+    //         console.log("Try again!");
+    //         console.log(flippedCards.length);//0???
+    //         currentCards = [];
+    //         //got some flipped..
+    //         flippedCards.forEach(flippedCard => {
+    //             setTimeout(flippedCard.classList.remove("flip"),2000)
+    //         })
+    //         //flip back opened colors.
+            
+    //     }
+    
     // if(currentCards.length === 2){
     //     return matchingCards(currentCards);
     // }
   
-}
+
 
 
 //matching cards
@@ -148,7 +204,7 @@ chooseOptions();
 cards.forEach(card => {
     card.addEventListener('click', flipcard)
 });
-
+    
 
 // clearGame();
 
