@@ -4,10 +4,11 @@ const cards = document.querySelectorAll(".card");
 const easyButton = document.querySelector(".easy");
 const hardButton = document.querySelector(".hard");
 // "flipped" will count flipped cards should be 2
-const flippedCards = document.querySelectorAll(".flipped");
-const cardBackSides = document.querySelectorAll(".card-back");//real img display
-// console.log(cardBackSides);
+// const flippedCards = document.querySelectorAll(".flip");
 
+const cardBackSides = document.querySelectorAll(".card-back");
+//real img display
+// console.log(cardBackSides);
 //class : matched
 //class : unmatched
 
@@ -21,7 +22,7 @@ const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻',
 let playerScore = 0;
 let matchedCardCount = 0;
 let flippedCardsCount = 0;// for counting for comparison
-
+let gameStart = false;
 
 function clearGame(){
     cardBackSides.forEach(card => {
@@ -48,6 +49,7 @@ function chooseOptions(){
             hardButton.classList.add("disabled");
             hardButton.disabled = true;
             displayEasyCards();
+
         });
     }
     if(!chooseHardOption){
@@ -58,6 +60,7 @@ function chooseOptions(){
                 hardButton.classList.add("disabled");
                 hardButton.disabled = true;
                 displayHardCards();
+
             });
         }
     }
@@ -80,17 +83,42 @@ function displayHardCards(){
         return
     });
 }
-
-function matchingCards(){
-    cards.forEach(card => {
-        card.addEventListener("click", ()=> {
-            card.classList.add("flip")
-        });
-    })
+const currentCards = [];
+//let user clicking cards 
+function flipcard(){
+    this.classList.add("flip")
+    if(currentCards.length === 0){
+        let cardOne = this.querySelector(".card-back").innerText;
+        currentCards.push(cardOne);
+        console.log(currentCards[0]);
+        return;
+    }
+    if(currentCards.length === 1){
+        let cardTwo = this.querySelector(".card-back").innerText;
+        currentCards.push(cardTwo);
+        console.log(currentCards[1]);
+        return;
+    }
+    if(currentCards.length === 2){
+        return matchingCards(arr);
+    }
+  
 }
 
-//choose easy, hard and display cards
+
+//matching cards
+function matchingCards(arr){
+
+}
+
+//game start!
+
 chooseOptions();
-matchingCards();
+
+cards.forEach(card => {
+    card.addEventListener('click', flipcard)
+});
+
+
 // clearGame();
 

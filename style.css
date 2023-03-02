@@ -79,22 +79,14 @@ main {
     transition: transform 0.8s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
-.flip-card .card.flip{
+.flip{
     transform: rotateY(180deg);
 }
 
 
-
-.flipped {
-    background-color: purple;
-}
-
-/* 
-.card .card-front{
-    color:purple;
-} */
 
 .card-front, .card-back{
     position: absolute;
@@ -113,4 +105,5 @@ main {
     background-color: #fff;
     color:black;
     transform: rotateY(180deg);
+    user-select: none;
 }
