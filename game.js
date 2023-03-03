@@ -3,6 +3,10 @@
 const cards = document.querySelectorAll(".card");
 const easyButton = document.querySelector(".easy");
 const hardButton = document.querySelector(".hard");
+const score = document.querySelector(".score");
+
+// console.log(score);
+
 // "flipped" will count flipped cards should be 2
 // const flippedCards = document.querySelectorAll(".flip");
 
@@ -16,7 +20,7 @@ const cardBackSides = document.querySelectorAll(".card-back");
 //1.2 game related var
 const easyCards = ['🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄','🐕‍🦺','🐖','🦭','🐍','🐘','🐅','🐐','🐄'];
 const hardCards = ['☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇','☻','☁︎','❤︎','🐾','❥','☘','⛈','⛇'];
-
+const playerScoreImg = "😄";
 
 // let player1stTurn=true;
 // let player2ndTurn=false;
@@ -25,13 +29,6 @@ let matchedCardCount = 0;//max = 8
 // let flippedCardsCount = 0;// for counting for comparison
 let gameStart = false;
 
-function clearGame(){
-    cardBackSides.forEach(card => {
-        card.innerHTML = "";
-    });
-    easyButton.classList.toggle("disabled");
-    easyButton.disabled = false;
-}
 
 //copy this function .. to shuffle
 function shuffle(array) {
@@ -85,56 +82,73 @@ function displayHardCards(){
     });
 }
 
+function clearGame(){
+    cardBackSides.forEach(card => {
+        card.innerHTML = "";
+    });
+    easyButton.classList.toggle("disabled");
+    easyButton.disabled = false;
+}
+
 
 let currentCards = [];
 //once flipped and do not click again
 //let user clicking cards 
 
-function flipcard(){
-    let cardOne;
-    let cardTwo;
-    // this.classList.add("flip")
-    const flippedCards = document.querySelectorAll(".flip");
-    if(currentCards.length < 2){
-        if(!cardOne){
-            this.classList.add("flip");
-            cardOne = this.querySelector(".card-back").innerText;
-            currentCards.push(cardOne);
-            return cardOne;
-            // console.log(currentCards[0],currentCards[1]);
-        }
-        //this is 2nd user click!
-        if(cardOne){
-            this.classList.add("flip");
-            cardTwo = this.querySelector(".card-back").innerText;
-            currentCards.push(cardTwo);
-            return;
-        }
-    }
+// function flipcard(){
+//     let cardOne;
+//     let cardTwo;
+//     // this.classList.add("flip")
+//     const flippedCards = document.querySelectorAll(".flip");
+//     const matchedCards = document.querySelectorAll(".matched");
+//     if(currentCards.length < 2){
+//         if(!cardOne){
+//             this.classList.add("flip");
+//             cardOne = this.querySelector(".card-back").innerText;
+//             currentCards.push(cardOne);
+//             return cardOne;
+//             // console.log(currentCards[0],currentCards[1]);
+//         }
+//         this.classList.add("flip");
+//         cardTwo = this.querySelector(".card-back").innerText;
+//         currentCards.push(cardTwo);
+//         return currentCards;//return but at 3rd click we can see..
+//     }
+//     //3rd click so far..
 
-    if(currentCards.length === 2){
-        if(currentCards[0] === currentCards[1]){
-            console.log("matching")
+//     if(currentCards.length === 2){
+//         if(currentCards[0] === currentCards[1]){
+//             console.log("matching")
+//             flippedCards.forEach(flippedCard => {
+//                 flippedCard.classList.replace("flip","matched");
+//             });
+//             matchedCardCount++
+//             // score.innerHTML = "😄";
+//             console.log(matchedCards.length);
+//             return currentCards = [];
+//         } else {
+//             console.log("not matching")
+//             //flip back!
+//             // console.log(flippedCards.length);
+//             setTimeout(flippedCards.forEach(flippedCard => {
+//                 flippedCard.classList.remove("flip");
+//             }),1000)
+//             return currentCards = [];
+//         }
+//     }
 
-            matchedCardCount++
-            // console.log(flippedCards.length);
-            flippedCards.forEach(flippedCard => {
-                flippedCard.classList.replace("flip","matched");
-            });
-            
-            return currentCards = [];
-        } else {
-            console.log("not matching")
-            //flip back!
-            console.log(flippedCards.length);
-            setTimeout(flippedCards.forEach(flippedCard => {
-                flippedCard.classList.remove("flip");
-            }),1000)
-            return currentCards = [];
-        }
-    }
-}
+//     if(matchedCards.length === 14){
+//         matchedCards.forEach(matchedCard => {
+//             matchedCard.classList.remove("matched");
+//         })
+//     }
+// }
 
+
+// function matchingCards(){
+//     const flippedCards = document.querySelectorAll(".flip");
+//     console.log(flippedCards[0]);
+// }
 
 // function matchingCards(img1,img2){
 //     const flippedCards = document.querySelectorAll(".flip");
@@ -201,10 +215,70 @@ function flipcard(){
 
 chooseOptions();
 
-cards.forEach(card => {
-    card.addEventListener('click', flipcard)
-});
+// cards.forEach(card => {
+//     card.addEventListener('click', ()=> {
+//         flipcard()
+
+//     })
+        
+// });
     
 
 // clearGame();
 
+function flipcard(card){
+    let cardOne;
+    let cardTwo;
+    if(!currentCards.length){
+        card.classList.add("flip");
+        cardOne = card.querySelector(".card-back").innerHTML;
+        currentCards.push(cardOne);
+        console.log(currentCards[0])
+        return;
+    }
+    if(currentCards.length === 1){
+        card.classList.add("flip");
+        cardTwo = card.querySelector(".card-back").innerHTML;
+        currentCards.push(cardTwo);
+        console.log(currentCards[1])
+        return;
+    }
+ 
+    if(currentCards.length === 2){
+        // currentCards = [];
+        return true;
+    }
+ 
+}
+
+//can we get array as return value??
+
+function matchingCards(){
+    const flippedCards = document.querySelectorAll(".flip");
+    let cardOneImg = flippedCards[0].querySelector(".card-back").innerHTML;
+    // console.log(flippedCards.length);//2
+    if(flippedCards.length ===2){
+        let cardTwoImg = flippedCards[1].querySelector(".card-back").innerHTML;
+        // console.log(flippedCards[0]);//div
+        if(cardOneImg === cardTwoImg){
+            console.log("matching");
+        } else {
+            console.log("no no no")
+            setTimeout(()=>{
+                flippedCards[0].classList.remove("flip");
+                flippedCards[1].classList.remove("flip");
+            },1000)
+            return currentCards = [];
+
+        }
+    }
+    return true;
+}
+
+for (let i=0;i<cards.length;i++){
+    cards[i].addEventListener("click",()=> {
+        flipcard(cards[i])
+        matchingCards()
+
+    })
+}
