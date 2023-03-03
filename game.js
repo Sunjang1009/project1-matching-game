@@ -82,13 +82,7 @@ function displayHardCards(){
     });
 }
 
-function clearGame(){
-    cardBackSides.forEach(card => {
-        card.innerHTML = "";
-    });
-    easyButton.classList.toggle("disabled");
-    easyButton.disabled = false;
-}
+
 
 
 let currentCards = [];
@@ -213,7 +207,7 @@ let currentCards = [];
 
 //game start!
 
-chooseOptions();
+
 
 // cards.forEach(card => {
 //     card.addEventListener('click', ()=> {
@@ -225,6 +219,7 @@ chooseOptions();
     
 
 // clearGame();
+
 
 function flipcard(card){
     let cardOne;
@@ -252,8 +247,10 @@ function flipcard(card){
 }
 
 //can we get array as return value??
+//why variable shoule stay in function???
 
 function matchingCards(){
+    const matchedCards = document.querySelectorAll(".matched");
     const flippedCards = document.querySelectorAll(".flip");
     let cardOneImg = flippedCards[0].querySelector(".card-back").innerHTML;
     // console.log(flippedCards.length);//2
@@ -262,23 +259,61 @@ function matchingCards(){
         // console.log(flippedCards[0]);//div
         if(cardOneImg === cardTwoImg){
             console.log("matching");
+            matchedCardCount++
+            playerScore++
+            setTimeout(()=>{
+                flippedCards[0].classList.replace("flip","matched");
+                flippedCards[1].classList.replace("flip","matched");;
+            });
+            console.log(playerScore);
+            console.log(flippedCards.length);
+            console.log(matchedCards.length);
+            return currentCards = [];
+            
         } else {
             console.log("no no no")
             setTimeout(()=>{
                 flippedCards[0].classList.remove("flip");
                 flippedCards[1].classList.remove("flip");
             },1000)
+            console.log(playerScore);
+            console.log(flippedCards.length);
+            console.log(matchedCards.length);
             return currentCards = [];
 
         }
     }
-    return true;
+    //let's clear the board
+    if(playerScore === 8){
+        matchedCards.forEach(card=>{
+            card.classList.remove("matched");
+            card.classList.remove("flip");
+        })
+        return true;
+    }
+
 }
+
+
+// function clearGame(){
+//     card.classList.remove("matched");
+//     card.classList.remove("flip");
+// }
+
+// setTimeout(()=>{
+//     easyButton.classList.toggle("disabled");
+//     easyButton.disabled = false;
+//     hardButton.classList.toggle("disabled");
+//     hardButton.disabled = false;
+
+// },1000)
+
+chooseOptions();
 
 for (let i=0;i<cards.length;i++){
     cards[i].addEventListener("click",()=> {
-        flipcard(cards[i])
-        matchingCards()
-
+        flipcard(cards[i]);
+        matchingCards();
     })
 }
+
