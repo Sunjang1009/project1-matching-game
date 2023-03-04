@@ -45,14 +45,14 @@ main {
     align-items: center;
 }
 .board {
-    background-color: gainsboro;
+    background-color: white;
     width: 81.3vw;
     height: 81.3vh;
     
 }
 .score-board {
     background-color: hotpink;
-    height: 85vh;
+    height: 81.5vh;
     width: 25vw;
     border-radius: 10px;
 }
@@ -68,7 +68,7 @@ main {
     align-items: center;
     justify-content: center;
     background-color:lightpink;
-    border:1px solid;
+    border:1px gray solid;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -78,7 +78,7 @@ main {
     position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
     cursor: pointer;
 }
 
@@ -101,7 +101,7 @@ main {
 
 .card-front {
     background-color: lightblue;
-    color:ivory;
+    color:white;
 }
 .card-back {
     text-align: center;
