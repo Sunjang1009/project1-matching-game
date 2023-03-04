@@ -5,17 +5,9 @@ const easyButton = document.querySelector(".easy");
 const hardButton = document.querySelector(".hard");
 const score = document.querySelector(".score");
 
-// console.log(score);
-
-// "flipped" will count flipped cards should be 2
 // const flippedCards = document.querySelectorAll(".flip");
-
+//not sure flippedCards const variable is not working
 const cardBackSides = document.querySelectorAll(".card-back");
-
-//real img display
-// console.log(cardBackSides);
-//class : matched
-//class : unmatched
 
 //1.2 game related var
 const easyCards = ['🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄', '🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄'];
@@ -39,7 +31,7 @@ let chooseHardOption = false;
 function chooseOptions() {
     if (!chooseEasyOption) {
         easyButton.addEventListener("click", () => {
-            easyButton.classList.add("disabled");
+            easyButton.classList.add("disabledSelected");
             easyButton.disabled = true;
             hardButton.classList.add("disabled");
             hardButton.disabled = true;
@@ -52,7 +44,7 @@ function chooseOptions() {
             hardButton.addEventListener("click", () => {
                 easyButton.classList.add("disabled");
                 easyButton.disabled = true;
-                hardButton.classList.add("disabled");
+                hardButton.classList.add("disabledSelected");
                 hardButton.disabled = true;
                 displayHardCards();
 
@@ -128,14 +120,15 @@ function matchingCards() {
                     card.classList.remove("matched");
                     card.classList.remove("flip");
                 })
+                score.innerHTML = "";//why??
                 resetButton();
             }
-
             flippedCards[0].classList.replace("flip", "matched");
             flippedCards[1].classList.replace("flip", "matched");
-            console.log(playerScore);
-            console.log(flippedCards.length);
-            console.log(matchedCards.length);
+            // console.log(playerScore);
+            // console.log(flippedCards.length);
+            // console.log(matchedCards.length);
+            score.innerHTML = playerScore;
             return currentCards = [];
 
         } else {
@@ -148,24 +141,15 @@ function matchingCards() {
             console.log(flippedCards.length);
             console.log(matchedCards.length);
             return currentCards = [];
-
         }
     }
-    //let's clear the board
-    // if(playerScore === 8){
-
-    //     return true;
-    // }
-
 }
-
-
 
 function resetButton() {
     setTimeout(() => {
-        easyButton.classList.remove("disabled");
+        easyButton.classList.remove("disabled","disabledSelected");
         easyButton.disabled = false;
-        hardButton.classList.remove("disabled");
+        hardButton.classList.remove("disabled","disabledSelected");
         hardButton.disabled = false;
 
     }, 1000)
@@ -179,5 +163,5 @@ for (let i = 0; i < cards.length; i++) {
         matchingCards();
     })
 }
-
+//once clicked and disabled the cards.
 //stretch feature will be count the total click and give them points depends on the counts. min counts 16. 16-20, 20-25, 25-30 something like this//

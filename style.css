@@ -34,6 +34,10 @@ button {
     color:white;
     background-color: rgb(219, 215, 215);
 }
+.disabledSelected {
+    color:red;
+    background-color: rgb(219, 215, 215);
+}
 
 main {
     height: 80vh;
@@ -51,12 +55,17 @@ main {
     
 }
 .score-board {
+    display: flexbox;
+    text-align: center;
     background-color: hotpink;
     height: 81.5vh;
     width: 25vw;
     border-radius: 10px;
 }
-
+.score{
+    background-color: white;
+    color:black;
+}
 .flip-card {
     display: flex;
     height: 20vh;
