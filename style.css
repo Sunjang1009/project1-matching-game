@@ -7,9 +7,9 @@ body {
 
 }
 nav {
-    background-color: pink;
+    background-color: lavender;
     height: 10vh;
-    color:hotpink;
+    color:rgb(192, 134, 192);
     text-align: center;
     font-size: 1.3em;
 }
@@ -22,7 +22,7 @@ nav {
 }
 
 button {
-    color:green;
+    color:palevioletred;
     font-size: 1.3em;
     margin-right: 10px;
     font-weight: bold;
@@ -35,7 +35,7 @@ button {
     background-color: rgb(219, 215, 215);
 }
 .disabledSelected {
-    color:red;
+    color:darkgreen;
     background-color: rgb(219, 215, 215);
 }
 
@@ -57,7 +57,7 @@ main {
 .score-board {
     display: flexbox;
     text-align: center;
-    background-color: hotpink;
+    background-color: rgb(192, 134, 192);
     height: 81.5vh;
     width: 25vw;
     border-radius: 10px;
@@ -113,8 +113,8 @@ main {
 }
 
 .card-front {
-    background-color: lightblue;
-    color:white;
+    background-color: lavender;
+    color:rgb(192, 134, 192);
 }
 .card-back {
     text-align: center;
