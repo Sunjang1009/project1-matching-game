@@ -68,6 +68,7 @@ main {
 }
 .flip-card {
     display: flex;
+    justify-content: space-between;
     height: 20vh;
     width: 20vw;
     perspective: 1000px;
@@ -97,7 +98,7 @@ main {
 
 .matched {
     transform: rotateY(180deg);
-    backface-visibility: visible;
+    /* backface-visibility: visible; */
 }
 
 .card-front, .card-back{

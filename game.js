@@ -12,7 +12,7 @@ const cardBackSides = document.querySelectorAll(".card-back");
 //1.2 game related var
 const easyCards = ['🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄', '🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄'];
 const hardCards = ['☻', '☁︎', '❤︎', '🐾', '❥', '☘', '⛈', '⛇', '☻', '☁︎', '❤︎', '🐾', '❥', '☘', '⛈', '⛇'];
-const playerScoreImg = "😄";
+
 let playerScore = 0;
 let matchedCardCount = 0;//max = 8
 let gameStart = false;
@@ -27,31 +27,6 @@ function shuffle(array) {
 
 let chooseEasyOption = false;
 let chooseHardOption = false;
-
-function chooseOptions() {
-    if (!chooseEasyOption) {
-        easyButton.addEventListener("click", () => {
-            easyButton.classList.add("disabledSelected");
-            easyButton.disabled = true;
-            hardButton.classList.add("disabled");
-            hardButton.disabled = true;
-            displayEasyCards();
-
-        });
-    }
-    if (!chooseHardOption) {
-        if (!chooseEasyOption) {
-            hardButton.addEventListener("click", () => {
-                easyButton.classList.add("disabled");
-                easyButton.disabled = true;
-                hardButton.classList.add("disabledSelected");
-                hardButton.disabled = true;
-                displayHardCards();
-
-            });
-        }
-    }
-}
 
 function displayEasyCards() {
     shuffle(easyCards);
@@ -71,6 +46,34 @@ function displayHardCards() {
     });
 }
 
+function chooseOptions() {
+    if (!chooseEasyOption) {
+        easyButton.addEventListener("click", () => {
+            easyButton.classList.add("disabledSelected");
+            easyButton.disabled = true;
+            hardButton.classList.add("disabled");
+            hardButton.disabled = true;
+            displayEasyCards();
+            return true;
+
+        });
+    }
+    if (!chooseHardOption) {
+        if (!chooseEasyOption) {
+            hardButton.addEventListener("click", () => {
+                easyButton.classList.add("disabled");
+                easyButton.disabled = true;
+                hardButton.classList.add("disabledSelected");
+                hardButton.disabled = true;
+                displayHardCards();
+                return true;
+            });
+        }
+    }
+}
+
+
+
 let currentCards = [];
 
 function flipcard(card) {
@@ -80,14 +83,14 @@ function flipcard(card) {
         card.classList.add("flip");
         cardOne = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardOne);
-        console.log(currentCards[0])
+        console.log(currentCards[0])//tiger 
         return;
     }
     if (currentCards.length === 1) {
         card.classList.add("flip");
         cardTwo = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardTwo);
-        console.log(currentCards[1])
+        console.log(currentCards[1])//tiger???
         return;
     }
 
@@ -104,7 +107,8 @@ function flipcard(card) {
 function matchingCards() {
     const matchedCards = document.querySelectorAll(".matched");
     const flippedCards = document.querySelectorAll(".flip");
-    let cardOneImg = flippedCards[0].querySelector(".card-back").innerHTML;
+
+    let cardOneImg = flippedCards[0].querySelector(".card-back").innerHTML;//cannnot read 
     // console.log(flippedCards.length);//2
     if (flippedCards.length === 2) {
         let cardTwoImg = flippedCards[1].querySelector(".card-back").innerHTML;
@@ -113,6 +117,7 @@ function matchingCards() {
             console.log("matching");
             matchedCardCount++
             playerScore++
+            //lets start a new game. removeEventLister, and addEventListner.
             if (playerScore === 8) {
                 flippedCards[0].classList.remove("flip");
                 flippedCards[1].classList.remove("flip");
@@ -120,16 +125,26 @@ function matchingCards() {
                     card.classList.remove("matched");
                     card.classList.remove("flip");
                 })
-                score.innerHTML = "";//why??
-                resetButton();
+                score.innerHTML = "";
+                currentCards = [];
+                //removeEventListener
+                setTimeout(resetButton(),1000);
+                
+                // setTimeout(cards.forEach((card)=>{
+                //     card.removeEventListener("click",()=>{
+                //         flipcard(card)
+                //         matchingCards();
+                //     })
+                // }),1000)
+
+                return true;
             }
+                
             flippedCards[0].classList.replace("flip", "matched");
             flippedCards[1].classList.replace("flip", "matched");
-            // console.log(playerScore);
-            // console.log(flippedCards.length);
-            // console.log(matchedCards.length);
             score.innerHTML = playerScore;
-            return currentCards = [];
+            currentCards = [];
+            return;
 
         } else {
             console.log("no no no")
@@ -137,12 +152,21 @@ function matchingCards() {
                 flippedCards[0].classList.remove("flip");
                 flippedCards[1].classList.remove("flip");
             }, 700)
-            console.log(playerScore);
-            console.log(flippedCards.length);
-            console.log(matchedCards.length);
-            return currentCards = [];
+            currentCards = [];
+            return;
         }
-    }
+    }return true;
+}
+//new Game 
+function startNewGame(){
+ 
+    chooseOptions();
+    cards.forEach((card)=>{
+        card.addEventListener("click",()=>{
+            flipcard(card);
+            matchingCards();
+        });
+    });
 }
 
 function resetButton() {
@@ -153,8 +177,10 @@ function resetButton() {
         hardButton.disabled = false;
 
     }, 1000)
+    return;
 }
 
+//game start.
 chooseOptions();
 
 for (let i = 0; i < cards.length; i++) {
@@ -163,5 +189,9 @@ for (let i = 0; i < cards.length; i++) {
         matchingCards();
     })
 }
+
+// startNewGame();
+
+
 //once clicked and disabled the cards.
 //stretch feature will be count the total click and give them points depends on the counts. min counts 16. 16-20, 20-25, 25-30 something like this//
