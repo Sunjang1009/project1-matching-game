@@ -117,6 +117,7 @@ function matchingCards() {
             console.log("matching");
             matchedCardCount++
             playerScore++
+            //player score goes up to 16
             //lets start a new game. removeEventLister, and addEventListner.
             if (playerScore === 8) {
                 flippedCards[0].classList.remove("flip");
@@ -125,18 +126,15 @@ function matchingCards() {
                     card.classList.remove("matched");
                     card.classList.remove("flip");
                 })
+
                 score.innerHTML = "";
                 currentCards = [];
+                playerScore = 0;
+                
                 //removeEventListener
                 setTimeout(resetButton(),1000);
-                
-                // setTimeout(cards.forEach((card)=>{
-                //     card.removeEventListener("click",()=>{
-                //         flipcard(card)
-                //         matchingCards();
-                //     })
-                // }),1000)
 
+    
                 return true;
             }
                 
