@@ -130,7 +130,7 @@ function matchingCards() {
                 score.innerHTML = "";
                 currentCards = [];
                 playerScore = 0;
-                
+
                 //removeEventListener
                 setTimeout(resetButton(),1000);
 
@@ -178,7 +178,7 @@ function resetButton() {
     return;
 }
 
-//game start.
+
 chooseOptions();
 
 for (let i = 0; i < cards.length; i++) {
@@ -188,8 +188,8 @@ for (let i = 0; i < cards.length; i++) {
     })
 }
 
-// startNewGame();
 
 
 //once clicked and disabled the cards.
 //stretch feature will be count the total click and give them points depends on the counts. min counts 16. 16-20, 20-25, 25-30 something like this//
+//start new game feature not necessary
