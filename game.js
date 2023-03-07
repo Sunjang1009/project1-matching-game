@@ -84,6 +84,7 @@ function flipcard(card) {
         cardOne = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardOne);
         console.log(currentCards[0])//tiger 
+        console.log(clickedCount);
         return;
     }
     if (currentCards.length === 1) {
@@ -91,6 +92,7 @@ function flipcard(card) {
         cardTwo = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardTwo);
         console.log(currentCards[1])//tiger???
+        console.log(clickedCount);
         return;
     }
 
@@ -117,6 +119,7 @@ function matchingCards() {
             console.log("matching");
             matchedCardCount++
             playerScore++
+            console.log(clickedCount);
             //player score goes up to 16
             //lets start a new game. removeEventLister, and addEventListner.
             if (playerScore === 8) {
@@ -130,6 +133,7 @@ function matchingCards() {
                 score.innerHTML = "";
                 currentCards = [];
                 playerScore = 0;
+                clickedCount = 0;
 
                 //removeEventListener
                 setTimeout(resetButton(),1000);
@@ -180,9 +184,10 @@ function resetButton() {
 
 
 chooseOptions();
-
+let clickedCount = 0;
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", () => {
+        clickedCount++
         flipcard(cards[i]);
         matchingCards();
     })
