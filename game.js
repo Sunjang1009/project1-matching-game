@@ -4,21 +4,16 @@ const cards = document.querySelectorAll(".card");
 const easyButton = document.querySelector(".easy");
 const hardButton = document.querySelector(".hard");
 const score = document.querySelector(".score");
-
-// const flippedCards = document.querySelectorAll(".flip");
-//not sure flippedCards const variable is not working
 const cardBackSides = document.querySelectorAll(".card-back");
 
 //1.2 game related var
 const easyCards = ['🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄', '🐕‍🦺', '🐖', '🦭', '🐍', '🐘', '🐅', '🐐', '🐄'];
 const hardCards = ['☻', '☁︎', '❤︎', '🐾', '❥', '☘', '⛈', '⛇', '☻', '☁︎', '❤︎', '🐾', '❥', '☘', '⛈', '⛇'];
-
 let playerScore = 0;
 let matchedCardCount = 0;//max = 8
 let gameStart = false;
-
-
-//copy this function .. to shuffle
+const clicked = document.querySelector(".clicked");
+const result = document.querySelector(".result");
 
 function shuffle(array) {
     shuffleArray = array.sort(() => Math.random() - 0.5);
@@ -72,8 +67,6 @@ function chooseOptions() {
     }
 }
 
-
-
 let currentCards = [];
 
 function flipcard(card) {
@@ -83,7 +76,7 @@ function flipcard(card) {
         card.classList.add("flip");
         cardOne = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardOne);
-        console.log(currentCards[0])//tiger 
+        console.log(currentCards[0])
         console.log(clickedCount);
         return;
     }
@@ -91,13 +84,12 @@ function flipcard(card) {
         card.classList.add("flip");
         cardTwo = card.querySelector(".card-back").innerHTML;
         currentCards.push(cardTwo);
-        console.log(currentCards[1])//tiger???
+        console.log(currentCards[1])
         console.log(clickedCount);
         return;
     }
 
     if (currentCards.length === 2) {
-        // currentCards = [];
         return true;
     }
 
@@ -129,25 +121,30 @@ function matchingCards() {
                     card.classList.remove("matched");
                     card.classList.remove("flip");
                 })
+                //result score update
+                if(clickedCount>=16 && clickedCount < 20){
+                    result.innerHTML = "Genius";
+                } else if (clickedCount >=20 && clickedCount < 30){
+                    result.innerHTML = "good";
+                } else if (clickedCount >=30 && clickedCount < 40){
+                    result.innerHTML = "normal";
+                } else {
+                    result.innerHTML = "stupid";
+                }
 
+                //refresh score boards.
                 score.innerHTML = "";
                 currentCards = [];
                 playerScore = 0;
                 clickedCount = 0;
-
-                //removeEventListener
                 setTimeout(resetButton(),1000);
-
-    
                 return true;
             }
-                
             flippedCards[0].classList.replace("flip", "matched");
             flippedCards[1].classList.replace("flip", "matched");
             score.innerHTML = playerScore;
             currentCards = [];
             return;
-
         } else {
             console.log("no no no")
             setTimeout(() => {
@@ -159,17 +156,7 @@ function matchingCards() {
         }
     }return true;
 }
-//new Game 
-function startNewGame(){
- 
-    chooseOptions();
-    cards.forEach((card)=>{
-        card.addEventListener("click",()=>{
-            flipcard(card);
-            matchingCards();
-        });
-    });
-}
+
 
 function resetButton() {
     setTimeout(() => {
@@ -177,17 +164,18 @@ function resetButton() {
         easyButton.disabled = false;
         hardButton.classList.remove("disabled","disabledSelected");
         hardButton.disabled = false;
-
     }, 1000)
     return;
 }
 
 
+//start game here//
 chooseOptions();
 let clickedCount = 0;
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", () => {
         clickedCount++
+        clicked.innerHTML = clickedCount;
         flipcard(cards[i]);
         matchingCards();
     })
