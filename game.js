@@ -49,6 +49,8 @@ function chooseOptions() {
             hardButton.classList.add("disabled");
             hardButton.disabled = true;
             displayEasyCards();
+            result.innerHTML="";
+            clicked.innerHTML="";
             return true;
 
         });
@@ -61,6 +63,8 @@ function chooseOptions() {
                 hardButton.classList.add("disabledSelected");
                 hardButton.disabled = true;
                 displayHardCards();
+                result.innerHTML="";
+                clicked.innerHTML="";
                 return true;
             });
         }
@@ -137,7 +141,7 @@ function matchingCards() {
                 currentCards = [];
                 playerScore = 0;
                 clickedCount = 0;
-                setTimeout(resetButton(),1000);
+                setTimeout(resetButton(),5000);
                 // setTimeout(()=>result.innerHTML="",5000);
                 return true;
             }
@@ -165,8 +169,9 @@ function resetButton() {
         easyButton.disabled = false;
         hardButton.classList.remove("disabled","disabledSelected");
         hardButton.disabled = false;
-        result.innerHTML="";
+        
     }, 1000)
+    
     return;
 }
 
