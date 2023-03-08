@@ -123,13 +123,13 @@ function matchingCards() {
                 })
                 //result score update
                 if(clickedCount>=16 && clickedCount < 20){
-                    result.innerHTML = "Genius";
+                    result.innerHTML = "You are a Genius";
                 } else if (clickedCount >=20 && clickedCount < 30){
-                    result.innerHTML = "good";
+                    result.innerHTML = "You are good";
                 } else if (clickedCount >=30 && clickedCount < 40){
                     result.innerHTML = "normal";
                 } else {
-                    result.innerHTML = "stupid";
+                    result.innerHTML = "hmmm";
                 }
 
                 //refresh score boards.
