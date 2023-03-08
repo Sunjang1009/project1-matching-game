@@ -123,13 +123,13 @@ function matchingCards() {
                 })
                 //result score update
                 if(clickedCount>=16 && clickedCount < 20){
-                    result.innerHTML = "You are a Genius";
+                    result.innerHTML = "Good job,cheater!";
                 } else if (clickedCount >=20 && clickedCount < 30){
-                    result.innerHTML = "You are good";
+                    result.innerHTML = "well done for being normal.";
                 } else if (clickedCount >=30 && clickedCount < 40){
-                    result.innerHTML = "normal";
+                    result.innerHTML = "not bad...if you are 80 years old.";
                 } else {
-                    result.innerHTML = "hmmm";
+                    result.innerHTML = "Do you even remember your own name?";
                 }
 
                 //refresh score boards.
@@ -138,6 +138,7 @@ function matchingCards() {
                 playerScore = 0;
                 clickedCount = 0;
                 setTimeout(resetButton(),1000);
+                // setTimeout(()=>result.innerHTML="",5000);
                 return true;
             }
             flippedCards[0].classList.replace("flip", "matched");
@@ -164,6 +165,7 @@ function resetButton() {
         easyButton.disabled = false;
         hardButton.classList.remove("disabled","disabledSelected");
         hardButton.disabled = false;
+        result.innerHTML="";
     }, 1000)
     return;
 }
