@@ -7,9 +7,9 @@ welcome to my memory matching game.
 
 # game rule / how to play
 1. Choose options (easy or hard)
-1.1 easy will be colorful cards, so that player can memorize them easier than black and white cards. Hard options will be black and white emogi cards.
+1.1 easy will display colorful cards, so that player can memorize them easier than black and white cards. Hard options will display black and white emogi cards.
 1.2 Game will count the total clicked count. Depends on that, the secret result will be shown. 
-2. Click two cards. Game will decide match or not match.
+2. Click two cards. Game will decide matched or not matched.
 2.1 If they match, then you will get +1 player score. 
 2.2 if they are not matched, cards will be flipped back automatically.
 3. winning condition : all 8 pairs of matching cards are flipped. 
